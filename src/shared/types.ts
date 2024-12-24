@@ -1,6 +1,6 @@
-export interface DefaultCourseType {
-    title: string;
-    date: string;
-    description: string;
-    link: string;
+export interface CardData {
+    cardType: string;
+    name: string;
+    message: string;
+    quote: string;
 }

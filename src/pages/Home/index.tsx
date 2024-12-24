@@ -1,29 +1,66 @@
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { CardData } from '../../shared/types';
 
 /**
  * change place holder based on happy holidays or merry christmas
  * change handleGenreate function to get a random quote
+ * set og quote before handle generate
  *  for - christmas rando quote say by #random num elf
  * so send all the vars below to a template webpage
  * figure out how to make unique webpage for each user
  */
 
 const Home = () => { 
-    const [cardType, setCardType] = useState('');
-    const [name, setName] = useState('');
-    const [message, setMessage] = useState('');
+    const getRandomQuote = () => {
+        "hello";
+    };
+
+    const [cardType, setCardType] = useState('Christmas');
+    const [name, setName] = useState('Someone Special');
+    const [message, setMessage] = useState('Merry Christmas!');
+    const [quote, setQuote] = useState('');
     const [isSurprise, setIsSurprise] = useState(false);
+
+    const postMessage = async (cardData: CardData): Promise<string> => {
+        try {
+          const response = await axios.post('http://localhost:5001/api/card', cardData);
+          const { _id } = response.data;
+          console.log(`Message posted successfully. ID: ${_id}`);
+          return _id;
+        } catch (error) {
+          if (axios.isAxiosError(error)) {
+            console.error('Axios Error:', error.response?.data);
+            console.error('Status:', error.response?.status);
+            console.error('Headers:', error.response?.headers);
+          } else {
+            console.error('Unknown Error:', error);
+          }
+          throw error;
+        }
+    };      
 
     const handleGenerate = () => {
         // retrieve quote
-        console.log("Generating greeting card with:", {
-            cardType,
-            name,
-            message,
-            isSurprise,
-        });
+        setQuote('Once there lived a 5 star review.');
     };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+    
+        // Construct card data
+        const cardData: CardData = { cardType, name, message, quote };
+        console.log('Card Data:', cardData);
+
+        try {
+          // Call postMessage to post the card data to the API
+          const cardId = await postMessage(cardData);
+          console.log(`Card ID: ${cardId}`);  // Log the unique card ID
+        } catch (error) {
+          console.error('Error submitting message:', error);  // Handle error if the POST fails
+        }
+    };    
      
     return (
        <section
@@ -95,20 +132,26 @@ const Home = () => {
                 </div>
 
                 {isSurprise && (
-                    <div className='pt-3'>
+                    <div className='pt-3 items-center justify-center'>
+                        <h2 className='text-lg text-center' >
+                            "Funny quote"
+                        </h2>
                         <button
                             type="button"
                             onClick={handleGenerate}
-                            className="w-full py-3 bg-[#335F55] text-white rounded-xl text-xl"                        
+                            className="w-full mx-auto mt-5 py-3 bg-[#335F55] text-white hover:border hover:border-[#335F55] hover:text-[#335F55] hover:bg-white rounded-xl text-sm"                        
                         >
-                            Generate
+                            Generate A Different Quote
                         </button>
-                        <h2 className='text-lg text-center pt-3' >
-                            "Funny quote"
-                        </h2>
                     </div>
-                    
                 )}
+                <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="w-full mt-5 py-3 bg-[#335F55] text-white hover:border hover:border-[#335F55] hover:text-[#335F55] hover:bg-white rounded-xl text-md"                        
+                >
+                    Submit
+                </button>
             </form> 
         </div>
         

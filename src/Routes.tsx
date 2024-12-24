@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Card from './pages/Card'
 
 
 const MainRoutes=()=> {
@@ -7,6 +8,7 @@ const MainRoutes=()=> {
    <div>
        <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/:userID" element={<Card />} />
       </Routes>
    </div>
  )
