@@ -74,7 +74,7 @@ const Card: React.FC = () => {
         <div className="bg-white h-full flex flex-col w-auto items-center justify-center">
         <div className='h-1/3 mb-10'>
             <img 
-                src="src/assets/christmas1.png" 
+                src="public/christmas1.png" 
                 alt="Christmas" 
                 className="mx-auto"
             />
@@ -85,7 +85,7 @@ const Card: React.FC = () => {
         </div>
         <div className='h-1/3 mb-5'>
             <img 
-                src="src/assets/christmas2.png" 
+                src="public/christmas2.png" 
                 alt="Christmas" 
                 className="mx-auto"
             />
