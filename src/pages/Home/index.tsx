@@ -43,7 +43,7 @@ const Home = () => {
 
     const handleGenerate = () => {
         // retrieve quote
-        setQuote('Once there lived a 5 star review.');
+        setQuote('Hello.');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -65,94 +65,106 @@ const Home = () => {
     return (
        <section
         id="home"
-        className="bg-[#335F55] gap-16 p-10 md:h-[800px] w-full md:pb-0 text-white"
+        className="bg-white gap-16 p-10 md:h-[800px] w-full md:pb-0 text-[#335F55]"
        >
 
         <div className='items-center justify-center'>
             <h1 className='pt-2 text-center text-6xl'>Profound Greetings</h1>
             <h2 className='pt-3 text-center text-xl'>Fill out the form below to create a custom greeting card accompanied with a <em>profound</em> quote.</h2>
-            <form 
-                onSubmit={(e) => e.preventDefault()}
-                className='bg-white h-auto w-[30rem] p-10 rounded-lg mx-auto mt-10 text-[#112621]'
-            >
-            <div className="mb-5">
-                <label htmlFor="cardType" className="block text-lg mb-2">
-                    Select Card Type
-                </label>
-                <select
-                    id="cardType"
-                    className="w-full p-3 border rounded-lg"
-                    value={cardType}
-                    onChange={(e) => setCardType(e.target.value)}
+            <div className='flex columns-2 gap-20 h-full items-center justify-center'>
+                <div>
+                    <img 
+                    src="src/assets/christmasHome.png" 
+                    alt="Christmas" 
+                    className="mx-auto mt-6 h-[37rem] object-contain"
+                    />
+                </div>
+                <div>
+                    <form 
+                        onSubmit={(e) => e.preventDefault()}
+                        className='bg-[#335F55] h-auto w-[30rem] p-10 rounded-lg mx-auto mt-10 text-white'
                     >
-                        <option value="">-- Choose a Card Type --</option>
-                        <option value="Birthday">Holiday</option>
-                        <option value="Anniversary">Christmas</option>
-                        <option value="Holiday">New Year's</option>
-                    </select>
-                </div>
+                    {/**<div className="mb-5">
+                        <label htmlFor="cardType" className="block text-lg mb-2">
+                            Select Card Type
+                        </label>
+                        <select
+                            id="cardType"
+                            className="w-full p-3 border rounded-lg"
+                            value={cardType}
+                            onChange={(e) => setCardType(e.target.value)}
+                            >
+                                <option value="">-- Choose a Card Type --</option>
+                                <option value="Birthday">Holiday</option>
+                                <option value="Anniversary">Christmas</option>
+                                <option value="Holiday">New Year's</option>
+                            </select>
+                        </div> */}
 
-                <div className="mb-5">
-                    <label htmlFor="name" className="block text-lg mb-2">
-                        Recipient Name
-                    </label>
-                    <input
-                        id="name"
-                        type="text"
-                        className="w-full p-3 border border-[#112621] rounded-xl"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Enter your name"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label htmlFor="message" className="block text-lg mb-2">
-                        Your Message
-                    </label>
-                    <textarea
-                        id="message"
-                        rows={1}
-                        className="w-full p-3 border border-[#112621] rounded-xl"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder='Merry Christmas!'
-                    />
-                </div>
-                <div className="flex items-center mb-2">
-                    <input
-                        type="checkbox"
-                        id="surpriseMessage"
-                        checked={isSurprise}
-                        onChange={(e) => setIsSurprise(e.target.checked)}
-                        className="mr-2"
-                    />
-                    <label htmlFor="surpriseMessage" className="text-lg">
-                        Reveal Suprise Profound Quote
-                    </label>
-                </div>
+                        <div className="mb-5">
+                            <label htmlFor="name" className="block text-lg mb-2">
+                                Recipient Name
+                            </label>
+                            <input
+                                id="name"
+                                type="text"
+                                className="w-full text-[#335F55] p-3 border border-white rounded-xl"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter your name"
+                            />
+                        </div>
+                        <div className="mb-5">
+                            <label htmlFor="message" className="block text-lg mb-2">
+                                Your Message
+                            </label>
+                            <textarea
+                                id="message"
+                                rows={1}
+                                className="w-full p-3 border text-[#335F55] border-white rounded-xl"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                                placeholder='Merry Christmas!'
+                            />
+                        </div>
+                        <div className="flex items-center mb-2">
+                            <input
+                                type="checkbox"
+                                id="surpriseMessage"
+                                checked={isSurprise}
+                                onChange={(e) => setIsSurprise(e.target.checked)}
+                                className="mr-2"
+                            />
+                            <label htmlFor="surpriseMessage" className="text-lg">
+                                Reveal the Profound Quote
+                            </label>
+                        </div>
 
-                {isSurprise && (
-                    <div className='pt-3 items-center justify-center'>
-                        <h2 className='text-lg text-center' >
-                            "Funny quote"
-                        </h2>
+                        {isSurprise && (
+                            <div className='p-6 border rounded border-[#498274] items-center justify-center bg-[#498274]'>
+                                <h2 className='text-lg text-[#335F55] text-center p-2 border rounded bg-white' >
+                                    {quote}
+                                </h2>
+                                <button
+                                    type="button"
+                                    onClick={handleGenerate}
+                                    className="w-full mx-auto mt-5 py-3 bg-white text-[#335F55] hover:border hover:border-white hover:text-white hover:bg-[#335F55] rounded-xl text-sm"                        
+                                >
+                                    Generate A Different Quote
+                                </button>
+                            </div>
+                        )}
                         <button
                             type="button"
-                            onClick={handleGenerate}
-                            className="w-full mx-auto mt-5 py-3 bg-[#335F55] text-white hover:border hover:border-[#335F55] hover:text-[#335F55] hover:bg-white rounded-xl text-sm"                        
+                            onClick={handleSubmit}
+                            className="w-full mt-7 py-3 bg-white text-[#335F55] hover:border hover:border-white hover:text-white hover:bg-[#335F55] rounded-xl text-md"                        
                         >
-                            Generate A Different Quote
+                            Submit
                         </button>
-                    </div>
-                )}
-                <button
-                    type="button"
-                    onClick={handleSubmit}
-                    className="w-full mt-5 py-3 bg-[#335F55] text-white hover:border hover:border-[#335F55] hover:text-[#335F55] hover:bg-white rounded-xl text-md"                        
-                >
-                    Submit
-                </button>
-            </form> 
+                    </form> 
+                </div>
+            </div>
+            
         </div>
         
         
