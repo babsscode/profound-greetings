@@ -12,7 +12,7 @@ const Modal: React.FC<ModalProps> = ({ message, onClose }) => {
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(message);  // Copy the message to clipboard
-      setCopySuccess(true);  // Indicate success
+      setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);  // Reset success state after 2 seconds
     } catch (err) {
       console.error("Failed to copy text: ", err);
