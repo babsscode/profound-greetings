@@ -16,7 +16,7 @@ const Card: React.FC = () => {
     // Function to fetch card data from the API
     const fetchCardData = async () => {
         try {
-        const response = await fetch(`http://localhost:5001/api/card/${userID}`);
+        const response = await fetch(`https://profound-api.onrender.com/api/card/${userID}`);
         if (response.ok) {
             const data = await response.json();
             setCardData(data); // Set the card data in state

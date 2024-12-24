@@ -15,7 +15,7 @@ import Modal from '../Modal';
 
 const Home = () => { 
     const getRandomQuote = () => {
-        fetch('http://localhost:5001/api/random-quote') // Ensure the backend is running on this port
+        fetch('https://profound-api.onrender.com/api/random-quote') // Ensure the backend is running on this port
         .then((response) => response.json())
         .then((data) => {
             console.log(data.randomQuote)
@@ -36,7 +36,7 @@ const Home = () => {
 
     const postMessage = async (cardData: CardData): Promise<string> => {
         try {
-          const response = await axios.post('http://localhost:5001/api/card', cardData);
+          const response = await axios.post('https://profound-api.onrender.com/api/card', cardData);
           const { _id } = response.data;
           console.log(`Message posted successfully. ID: ${_id}`);
           return _id;
@@ -196,7 +196,7 @@ const Home = () => {
         <div>
             {/* Show modal if showModal is true */}
             {showModal && cardId && (
-                <Modal message={`http://localhost:5173/${cardId}`} onClose={handleCloseModal} />
+                <Modal message={`https://profoundgreetings.pages.dev/${cardId}`} onClose={handleCloseModal} />
             )}
         </div>
        </section>
