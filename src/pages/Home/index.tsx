@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CardData } from '../../shared/types';
+import Modal from '../Modal';
+
 
 /**
  * change place holder based on happy holidays or merry christmas
@@ -14,12 +15,22 @@ import { CardData } from '../../shared/types';
 
 const Home = () => { 
     const getRandomQuote = () => {
-        "hello";
+        fetch('http://localhost:5001/api/random-quote') // Ensure the backend is running on this port
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.randomQuote)
+          setQuote(data.randomQuote);
+        })
+        .catch((err) => {
+          console.error('Error fetching random quote: ', err); 
+        });
     };
 
-    const [cardType, setCardType] = useState('Christmas');
-    const [name, setName] = useState('Someone Special');
-    const [message, setMessage] = useState('Merry Christmas!');
+    const [showModal, setShowModal] = useState(false);
+    const [cardId, setCardId] = useState<string | null>(null);
+    const [cardType, setCardType] = useState('');
+    const [name, setName] = useState('');
+    const [message, setMessage] = useState('');
     const [quote, setQuote] = useState('');
     const [isSurprise, setIsSurprise] = useState(false);
 
@@ -42,26 +53,42 @@ const Home = () => {
     };      
 
     const handleGenerate = () => {
-        // retrieve quote
-        setQuote('Hello.');
+        getRandomQuote();
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-    
+        setCardType("Christmas");
         // Construct card data
-        const cardData: CardData = { cardType, name, message, quote };
-        console.log('Card Data:', cardData);
+        const cardData: CardData = {
+            cardType: cardType || "Christmas", 
+            name: name || "Someone Special",             
+            message: message || "Merry Christmas",    
+            quote: quote || "5 star feeling."           
+        };
+        
+        //console.log('Card Data:', cardData);
 
         try {
           // Call postMessage to post the card data to the API
           const cardId = await postMessage(cardData);
           console.log(`Card ID: ${cardId}`);  // Log the unique card ID
+          setCardId(cardId);
+          setShowModal(true);
+          //alert(`Your card has been created! Share this link to view the card: profoundgreetings.pages.dev/${cardId}`);
         } catch (error) {
           console.error('Error submitting message:', error);  // Handle error if the POST fails
         }
     };    
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
      
+    useEffect(() => {
+        getRandomQuote();        
+    }, []);
+
     return (
        <section
         id="home"
@@ -166,8 +193,12 @@ const Home = () => {
             </div>
             
         </div>
-        
-        
+        <div>
+            {/* Show modal if showModal is true */}
+            {showModal && cardId && (
+                <Modal message={`http://localhost:5173/${cardId}`} onClose={handleCloseModal} />
+            )}
+        </div>
        </section>
     );
 };
