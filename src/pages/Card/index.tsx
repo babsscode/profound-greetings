@@ -45,7 +45,7 @@ const Card: React.FC = () => {
     >
    {!isCardOpen && (
     <div 
-        className="bg-[#335F55] p-5 md:p-10 sm:h-[30rem] md:h-[45rem] w-[90%] mx-auto lg:w-2/5 text-[#335F55]" 
+        className="bg-[#335F55] p-5 md:p-10 sm:h-[20rem] md:h-[35rem] w-[90%] mx-auto lg:w-2/5 text-[#335F55]" 
         onClick={handleCardClick}
     >
         <div className="bg-white flex flex-col h-full items-center justify-center p-10">
