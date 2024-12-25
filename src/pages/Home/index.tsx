@@ -101,7 +101,7 @@ const Home = () => {
             <div className='flex columns-2 gap-20 h-full items-center justify-center'>
                 <div>
                     <img 
-                    src="public/christmasHome.png" 
+                    src="/christmasHome.png" 
                     alt="Christmas" 
                     className="mx-auto mt-6 h-[37rem] object-contain"
                     />
