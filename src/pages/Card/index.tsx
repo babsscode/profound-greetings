@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { CardReturnData } from '../../shared/types';
 
 const Card: React.FC = () => {
+    // add back to home btn in this page.
     const { userID } = useParams<{ userID: string }>();
     const [isCardOpen, setIsCardOpen] = useState(false);
     const [cardData, setCardData] = useState<CardReturnData>({
@@ -49,7 +50,7 @@ const Card: React.FC = () => {
     >
         <div className="bg-white flex flex-col h-full items-center justify-center p-10">
             <img 
-                src="src/assets/christmas2.png" 
+                src="christmas2.png" 
                 alt="Christmas" 
                 className="mx-auto h-5/6 object-contain"
             />
@@ -57,7 +58,7 @@ const Card: React.FC = () => {
             <h1 className='rochester-regular text-center text-5xl lg:text-7xl mb-10'>{cardData.name}</h1>
             <p className='mb-4 text-center'>Click to open the greeting card.</p>
             <img 
-                src="src/assets/christmas1.png" 
+                src="christmas1.png" 
                 alt="Christmas" 
                 className="mx-auto h-5/6 object-contain"
             />
@@ -98,7 +99,7 @@ const Card: React.FC = () => {
         {/* Image at the bottom of the second column */}
         <div className="mt-auto">
             <img 
-            src="src/assets/christmasImage.png" 
+            src="/christmasImage.png" 
             alt="Christmas" 
             className="mx-auto"
             />
