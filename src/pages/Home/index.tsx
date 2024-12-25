@@ -6,11 +6,6 @@ import Modal from '../Modal';
 
 /**
  * change place holder based on happy holidays or merry christmas
- * change handleGenreate function to get a random quote
- * set og quote before handle generate
- *  for - christmas rando quote say by #random num elf
- * so send all the vars below to a template webpage
- * figure out how to make unique webpage for each user
  */
 
 const Home = () => { 
