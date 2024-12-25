@@ -92,24 +92,24 @@ const Home = () => {
     return (
        <section
         id="home"
-        className="bg-white gap-16 p-10 md:h-[800px] w-full md:pb-0 text-[#335F55]"
+        className="bg-white gap-16 p-10 h-full md:h-[800px] w-full md:pb-0 text-[#335F55]"
        >
 
         <div className='items-center justify-center'>
             <h1 className='pt-2 text-center text-6xl'>Profound Greetings</h1>
             <h2 className='pt-3 text-center text-xl'>Fill out the form below to create a custom greeting card accompanied with a <em>profound</em> quote.</h2>
-            <div className='flex columns-2 gap-20 h-full items-center justify-center'>
+            <div className='flex flex-row lg:columns-2 lg:gap-20 h-full items-center justify-center'>
                 <div>
                     <img 
                     src="/christmasHome.png" 
                     alt="Christmas" 
-                    className="mx-auto mt-6 h-[37rem] object-contain"
+                    className="mx-auto mt-6 h-[37rem] object-contain hidden md:block"
                     />
                 </div>
-                <div>
+                <div className=''>
                     <form 
                         onSubmit={(e) => e.preventDefault()}
-                        className='bg-[#335F55] h-auto w-[30rem] p-10 rounded-lg mx-auto mt-10 text-white'
+                        className='bg-[#335F55] h-auto md:w-[30rem] p-10 rounded-lg mx-auto mt-10 text-white'
                     >
                     {/**<div className="mb-5">
                         <label htmlFor="cardType" className="block text-lg mb-2">

@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ message, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white rounded-lg p-8 shadow-lg max-w-sm w-full">
+      <div className="bg-white rounded-lg p-8 shadow-lg max-w-sm w-5/6 md:w-full">
         <h2 className="text-xl font-semibold text-center mb-4">Share this Link:</h2>
         
         <div className='mx-4'> 

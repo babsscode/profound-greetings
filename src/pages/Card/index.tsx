@@ -41,11 +41,11 @@ const Card: React.FC = () => {
     return (
     <section
         id="home"
-        className="bg-[#b7cfc9] gap-16 p-10 h-[800px] w-full md:pb-0 text-[#112621] items-center justify-center"
+        className="bg-[#b7cfc9] gap-16 py-2 min-h-screen overflow-auto pb-16 md:p-10 w-full md:pb-0 text-[#112621] items-center justify-center"
     >
    {!isCardOpen && (
     <div 
-        className="bg-[#335F55] mt-10 p-10 h-5/6 w-4/6 mx-16 lg:w-2/5 lg:mx-auto text-[#335F55]" 
+        className="bg-[#335F55] mt-10 p-5 md:p-10 h-5/6 w-[90%] mx-auto lg:w-2/5 text-[#335F55]" 
         onClick={handleCardClick}
     >
         <div className="bg-white flex flex-col h-full items-center justify-center p-10">
@@ -69,7 +69,7 @@ const Card: React.FC = () => {
 
     {isCardOpen && (
     <div 
-        className="bg-[#335F55] mt-10 gap-4 grid grid-cols-1 lg:grid-cols-2 p-5 h-auto lg:h-5/6 w-4/6 mx-auto text-[#335F55]" 
+        className="bg-[#335F55] mt-10 gap-4 grid grid-cols-1 w-[90%] lg:grid-cols-2 p-5 h-auto lg:h-5/6 lg:w-4/6 mx-auto text-[#335F55]" 
         onClick={handleCardClick}
     >
         <div className="bg-white h-full flex flex-col w-auto items-center justify-center">
@@ -81,7 +81,7 @@ const Card: React.FC = () => {
             />
         </div>
         <div className='mb-10 h-1/3'>
-            <h1 className="text-2xl mx-9 text-center">{cardData.quote}</h1>
+            <h1 className="text-2xl mx-9 text-center break-words block">{cardData.quote}</h1>
             <p className='mt-4 text-lg text-center'>- Elf #{Math.floor(Math.random() * 100) + 1}</p>
         </div>
         <div className='h-1/3 mb-5'>
@@ -93,8 +93,8 @@ const Card: React.FC = () => {
         </div>
     </div>
 
-        <div className="bg-white h-full w-auto flex flex-col justify-between">
-        <h1 className="rochester-regular text-7xl text-center mx-5 mt-16">{cardData.message}</h1>
+        <div className="bg-white min-h-[30rem] md:h-full w-auto flex flex-col justify-between">
+        <h1 className="rochester-regular text-5xl lg:text-7xl text-center mx-5 mt-16 break-words block">{cardData.message}</h1>
        
         {/* Image at the bottom of the second column */}
         <div className="mt-auto">
