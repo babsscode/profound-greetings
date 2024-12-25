@@ -196,7 +196,7 @@ const Home = () => {
         <div>
             {/* Show modal if showModal is true */}
             {showModal && cardId && (
-                <Modal message={`https://profoundgreetings.pages.dev/${cardId}`} onClose={handleCloseModal} />
+                <Modal message={`https://profoundgreetings.vercel.app/${cardId}`} onClose={handleCloseModal} />
             )}
         </div>
        </section>
